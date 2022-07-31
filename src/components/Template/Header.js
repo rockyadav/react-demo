@@ -15,9 +15,10 @@ const Header = () => {
 						<li><Link to="contact">Contact</Link></li>
 						<li><Link to="faq">FAQ</Link></li>
 						<li><Link to="help">Help</Link></li>
+						<li><Link to="products">Products</Link></li>
 						</ul>
 					</div>
-					<div class="clr"></div>
+					<div className="clr"></div>
 				</div>
 			</header>
         </>

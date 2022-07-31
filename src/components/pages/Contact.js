@@ -1,6 +1,33 @@
-import React from "react";
+import React, { useRef } from "react";
+import { firestore } from "../../firewase";
+import { addDoc, collection } from "@firebase/firestore";
 
 const Contact = () => {
+    const fullnameRef = useRef();
+    const emailRef = useRef();
+    const phoneRef = useRef();
+    const messageRef = useRef();
+    const ref = collection(firestore, "contact-form");
+    const formHandler = async(e) => {
+        e.preventDefault();
+
+        let data = {
+            fullname : fullnameRef.current.value,
+            email : emailRef.current.value,
+            phone : phoneRef.current.value,
+            message : messageRef.current.value
+        };
+
+        try {
+            if(addDoc(ref, data))
+            {
+                e.target.reset();
+                alert("Form submited successfully");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
         <>
             <div className="feature" id="content">
@@ -8,13 +35,20 @@ const Contact = () => {
 					<main id="contentbar">
 						<div className="article">
                             <h1 className="center">Contact Page</h1>
-							<p>What is Lorem Ipsum?
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                
-                                Why do we use it?
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                
-                            </p>
+                                <form onSubmit={formHandler}>
+                                    <label>Full Name</label>
+                                    <input type="text" id="fname" name="fullname" placeholder="Your full name.." ref={fullnameRef} required />
+
+                                    <label>Email</label>
+                                    <input type="email" id="email" name="email" placeholder="Enter your email.." ref={emailRef} required/>
+
+                                    <label>Phone</label>
+                                    <input type="phone" id="phone" name="phone" placeholder="Enter your phone number.." ref={phoneRef} />
+                                    
+                                    <label>Message</label>
+                                    <textarea id="message" name="message" placeholder="Write something.." ref={messageRef} required></textarea>
+                                    <input type="submit" value="Submit" />
+                                </form>
 						</div>
 					</main>					
 					<div className="clr"></div>

@@ -6,7 +6,7 @@ const Footer = () => {
             <footer id="footerblurb">
 				<div id="footer-inner">
 					<p>&copy; Copyright <Link to={"#"}>Your Site</Link> &#124; <Link to={"#"}>Terms of Use</Link> &#124; <Link to={"#"}>Privacy Policy</Link></p>
-					<div class="clr"></div>
+					<div className="clr"></div>
 				</div>
 			</footer>
         </>

@@ -49,3 +49,32 @@ html, #page { padding:0; margin:0;}
     /* Clear both sides to assist with div alignment  */
     .clr { clear:both; padding:0; margin:0; width:100%; font-size:0px; line-height:0px;}
     .center{ text-align: center; }
+    #contentbar{ text-align: center; }
+
+    input[type=email], input[type=phone], input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+      }
+      
+      input[type=submit] {
+        background-color: #04AA6D;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+
+    form label {
+        float: left;
+    }
